@@ -27,9 +27,9 @@ jobs:
         ...
         steps:
             - actions/checkout@v1
-            # Make sure the @v0.4.0 matches the current version of the
+            # Make sure the @v0.4.1 matches the current version of the
             # action 
-            - uses: webfactory/ssh-agent@v0.4.0
+            - uses: webfactory/ssh-agent@v0.4.1
               with:
                   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
             - ... other steps
@@ -38,13 +38,13 @@ jobs:
 
 ### Using multiple keys
 
-There are cases where you might need to use multiple keys. For example, "deployment keys" might be limited to a single repository each.
+There are cases where you might need to use multiple keys. For example, "[deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys)" might be limited to a single repository, so you'll need several of them.
 
-In that case, you can set-up the different keys as multiple secrets and pass them all to the action like so:
+You can set up different keys as different secrets and pass them all to the action like so:
 
 ```yaml
 # ... contens as before
-            - uses: webfactory/ssh-agent@v0.4.0
+            - uses: webfactory/ssh-agent@v0.4.1
               with:
                   ssh-private-key: |
                         ${{ secrets.FIRST_KEY }}
